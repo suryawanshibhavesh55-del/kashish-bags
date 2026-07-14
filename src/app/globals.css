@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FDFBF7;
+  --foreground: #1A0D0F;
+  --color-burgundy: #4B151C;
+  --color-wine: #6B1F28;
+  --color-cream: #FDFBF7;
+  --color-ivory: #F5EFEB;
+  --color-champagne: #EAE0D5;
+  --color-gold: #D4AF37;
+  --color-gold-accent: #C5A880;
+}
+
+@theme {
+  --color-burgundy: var(--color-burgundy);
+  --color-burgundy-light: #5E1A22;
+  --color-wine: var(--color-wine);
+  --color-cream: var(--color-cream);
+  --color-ivory: var(--color-ivory);
+  --color-champagne: var(--color-champagne);
+  --color-gold: var(--color-gold);
+  --color-gold-accent: var(--color-gold-accent);
+  
+  --font-serif: var(--font-serif), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-sans), Poppins, Inter, system-ui, sans-serif;
+  
+  --animate-marquee: marquee 30s linear infinite;
+  
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+/* Base style settings */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .serif-font {
+  font-family: var(--font-serif);
+}
+
+/* Premium shadows & animations */
+.luxury-shadow {
+  box-shadow: 0 12px 30px -10px rgba(75, 21, 28, 0.06);
+}
+
+.luxury-shadow-lg {
+  box-shadow: 0 20px 40px -15px rgba(75, 21, 28, 0.1);
+}
+
+.luxury-transition {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hide scrollbars but preserve functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Subtle border gold line */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-accent), transparent);
+}
+
+/* Styling native range inputs / scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-accent);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-burgundy);
+}
