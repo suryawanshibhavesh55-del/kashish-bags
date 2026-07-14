@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   // 1. Centralized Production Domain
   // Replace this with your final custom domain (e.g., "https://www.yourdomain.com") when ready.
   // This domain is used for canonical links, sitemaps, metadata, and WhatsApp image text urls.
-  siteUrl: "https://kashishbags.com",
+  siteUrl: "https://kashish-bags.vercel.app",
 
   // 2. Official Contact Information
   whatsAppNumber: "919772326529", // Format: [CountryCode][Number] without '+' or spaces

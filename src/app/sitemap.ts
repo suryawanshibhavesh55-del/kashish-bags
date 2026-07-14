@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
 import { products } from '@/data/products';
+import { SITE_CONFIG } from '@/utils/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://kashishbags.com';
+  const baseUrl = SITE_CONFIG.siteUrl;
   
   // Static website routes
   const staticPaths = [

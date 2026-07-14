@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kashishbags.com/sitemap.xml
+Sitemap: https://kashish-bags.vercel.app/sitemap.xml
