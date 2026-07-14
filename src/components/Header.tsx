@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { Instagram, Facebook, WhatsApp } from "@/components/Icons";
+import { Facebook, WhatsApp } from "@/components/Icons";
 import { getWhatsAppGeneralContactLink } from "@/utils/whatsapp";
 import { SITE_CONFIG } from "@/utils/config";
 
@@ -34,7 +34,6 @@ export default function Header() {
   ];
 
   const whatsAppLink = getWhatsAppGeneralContactLink();
-  const instagramLink = SITE_CONFIG.instagramUrl;
   const facebookLink = SITE_CONFIG.facebookUrl;
 
   return (
@@ -47,15 +46,6 @@ export default function Header() {
           <span>✨</span>
         </div>
         <div className="hidden sm:flex items-center space-x-4">
-          <a
-            href={instagramLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
-            aria-label="Instagram"
-          >
-            <Instagram size={14} />
-          </a>
           <a
             href={facebookLink}
             target="_blank"
@@ -177,15 +167,6 @@ export default function Header() {
               );
             })}
             <div className="pt-4 flex justify-around">
-              <a
-                href={instagramLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-white/80 hover:text-[#D4AF37]"
-              >
-                <Instagram size={20} />
-                <span className="text-sm tracking-wider">Instagram</span>
-              </a>
               <a
                 href={facebookLink}
                 target="_blank"

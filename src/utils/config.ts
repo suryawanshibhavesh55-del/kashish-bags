@@ -13,8 +13,7 @@ export const SITE_CONFIG = {
   shopAddress: "Ground Floor, Ambience Mall, G-7 & G-8, Ambience Island, DLF Phase 3, Sector 24, Gurugram, Haryana 122010",
 
   // 3. Social Media Links
-  // Leave empty or replace with your official handles
-  instagramUrl: "https://www.instagram.com/kashish_bags_collection", 
+  instagramUrl: "", // Removed Instagram as requested
   facebookUrl: "https://www.facebook.com/1231223726731039/",
 
   // 4. Google Maps Interactive Embed Link

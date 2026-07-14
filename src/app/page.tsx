@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MessageCircle, ArrowRight, Star, Plus, Minus, Check } from "lucide-react";
-import { Instagram } from "@/components/Icons";
+import { Facebook } from "@/components/Icons";
 import { products, Product } from "@/data/products";
 import { getWhatsAppOrderLink, getWhatsAppGeneralContactLink } from "@/utils/whatsapp";
 import ProductCard from "@/components/ProductCard";
@@ -496,17 +496,17 @@ Please share the available designs!`;
         </div>
       </section>
 
-      {/* 7. INSTAGRAM GALLERY */}
+      {/* 7. FACEBOOK GALLERY */}
       <section className="py-20 bg-[#FDFBF7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-xs font-semibold tracking-[0.3em] text-[#C5A880] uppercase">
             Social Media
           </span>
           <h2 className="serif-font text-3xl sm:text-4xl font-normal text-burgundy mt-2 mb-4">
-            Follow Us On Instagram
+            Follow Us On Facebook
           </h2>
           <p className="text-xs text-[#6B1F28]/85 mb-10">
-            Join our luxury community and stay updated with the latest releases at <a href={SITE_CONFIG.instagramUrl} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-[#D4AF37]">@kashish_bags_collection</a>
+            Join our luxury community and stay updated with the latest releases on our <a href={SITE_CONFIG.facebookUrl} target="_blank" rel="noopener noreferrer" className="font-bold underline hover:text-[#D4AF37]">Facebook Page</a>
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
@@ -514,24 +514,24 @@ Please share the available designs!`;
               <div key={index} className="relative aspect-square rounded-xl overflow-hidden shadow-sm group bg-[#F5EFEB]">
                 <img
                   src={photo}
-                  alt={`KASHISH Handcrafted Ladies Bag - Instagram Feature ${index + 1}`}
+                  alt={`KASHISH Handcrafted Ladies Bag - Facebook Feature ${index + 1}`}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-burgundy/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <Instagram size={24} className="text-white" />
+                  <Facebook size={24} className="text-white" />
                 </div>
               </div>
             ))}
           </div>
 
           <a
-            href={SITE_CONFIG.instagramUrl}
+            href={SITE_CONFIG.facebookUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex bg-burgundy hover:bg-[#D4AF37] text-white hover:text-burgundy px-8 py-3 rounded-full text-xs font-semibold uppercase tracking-widest transition-colors items-center space-x-2"
           >
-            <Instagram size={14} />
-            <span>Follow on Instagram</span>
+            <Facebook size={14} />
+            <span>Follow on Facebook</span>
           </a>
         </div>
       </section>

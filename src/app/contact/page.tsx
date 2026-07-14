@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 import { MessageCircle, Phone, MapPin, Clock, CheckCircle } from "lucide-react";
-import { Instagram, Facebook } from "@/components/Icons";
+import { Facebook } from "@/components/Icons";
 import { getWhatsAppGeneralContactLink } from "@/utils/whatsapp";
 import { SITE_CONFIG } from "@/utils/config";
 
 export default function Contact() {
   const whatsAppLink = getWhatsAppGeneralContactLink("Hello! I want to contact you regarding KASHISH Bags Collection.");
-  const instagramLink = SITE_CONFIG.instagramUrl;
   const facebookLink = SITE_CONFIG.facebookUrl;
 
   // Form State
@@ -100,15 +99,6 @@ export default function Contact() {
                 >
                   <MessageCircle size={14} />
                   <span>WhatsApp Chat</span>
-                </a>
-                <a
-                  href={instagramLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-burgundy hover:bg-[#D4AF37] hover:text-burgundy text-white px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest transition-colors flex items-center space-x-2"
-                >
-                  <Instagram size={14} />
-                  <span>Instagram</span>
                 </a>
                 <a
                   href={facebookLink}

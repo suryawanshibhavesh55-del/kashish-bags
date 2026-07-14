@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { MessageCircle, MapPin, Phone, Clock } from "lucide-react";
-import { Instagram, Facebook } from "@/components/Icons";
+import { Facebook } from "@/components/Icons";
 import { getWhatsAppGeneralContactLink } from "@/utils/whatsapp";
 import { SITE_CONFIG } from "@/utils/config";
 
 export default function Footer() {
   const whatsAppLink = getWhatsAppGeneralContactLink();
-  const instagramLink = SITE_CONFIG.instagramUrl;
   const facebookLink = SITE_CONFIG.facebookUrl;
 
   return (
@@ -29,15 +28,6 @@ export default function Footer() {
               Handcrafted with love and precision. We design luxury, high-end bags that carry confidence and style for every special occasion.
             </p>
             <div className="flex space-x-3.5 pt-2">
-              <a
-                href={instagramLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-[#4B151C]/50 flex items-center justify-center text-[#EAE0D5] hover:bg-[#D4AF37] hover:text-burgundy transition-all duration-300"
-                aria-label="Instagram"
-              >
-                <Instagram size={16} />
-              </a>
               <a
                 href={facebookLink}
                 target="_blank"
