@@ -23,12 +23,15 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({ name: "", phone: "", message: "" });
-    }, 1500);
+    const messageText = `Hello KASHISH Bags Collection ✨\nI am contacting you from the website regarding a general inquiry.\n\n👤 Name: ${formData.name}\n📞 Phone: ${formData.phone}\n💬 Message: ${formData.message}`;
+    const whatsappUrl = `https://wa.me/${SITE_CONFIG.whatsAppNumber}?text=${encodeURIComponent(messageText)}`;
+
+    // Open WhatsApp URL in a new window/tab
+    window.open(whatsappUrl, "_blank");
+
+    setIsSubmitting(false);
+    setSubmitSuccess(true);
+    setFormData({ name: "", phone: "", message: "" });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -198,7 +201,7 @@ export default function Contact() {
                   disabled={isSubmitting}
                   className="w-full bg-burgundy hover:bg-[#D4AF37] text-white hover:text-burgundy py-3.5 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 hover:scale-[1.02] shadow-sm disabled:opacity-50 disabled:pointer-events-none"
                 >
-                  {isSubmitting ? "Submitting Inquiry..." : "Submit Message"}
+                  {isSubmitting ? "Opening WhatsApp..." : "Send Query on WhatsApp"}
                 </button>
               </form>
             )}

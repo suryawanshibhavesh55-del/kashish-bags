@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle, Sparkles } from "lucide-react";
+import { SITE_CONFIG } from "@/utils/config";
 
 export default function Inquiry() {
   const [formData, setFormData] = useState({
@@ -19,19 +20,22 @@ export default function Inquiry() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        city: "",
-        interestedProducts: "Butterfly Charm Tote",
-        message: "",
-      });
-    }, 1500);
+    const messageText = `Hello KASHISH Bags Collection ✨\nI have a bulk/custom inquiry from the website.\n\n👤 Name: ${formData.name}\n📞 Phone: ${formData.phone}\n📧 Email: ${formData.email}\n📍 City: ${formData.city}\n👜 Product of Interest: ${formData.interestedProducts}\n💬 Message & Requirements: ${formData.message}`;
+    const whatsappUrl = `https://wa.me/${SITE_CONFIG.whatsAppNumber}?text=${encodeURIComponent(messageText)}`;
+
+    // Open WhatsApp URL in a new window/tab
+    window.open(whatsappUrl, "_blank");
+
+    setIsSubmitting(false);
+    setSubmitSuccess(true);
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      city: "",
+      interestedProducts: "Butterfly Charm Tote",
+      message: "",
+    });
   };
 
   const handleChange = (
@@ -206,7 +210,7 @@ export default function Inquiry() {
                 disabled={isSubmitting}
                 className="w-full bg-burgundy hover:bg-[#D4AF37] text-white hover:text-burgundy py-4 rounded-full text-xs font-semibold uppercase tracking-widest transition-all duration-300 hover:scale-[1.02] shadow-sm disabled:opacity-50 disabled:pointer-events-none"
               >
-                {isSubmitting ? "Submitting Request..." : "Submit Inquiry"}
+                {isSubmitting ? "Opening WhatsApp..." : "Send Inquiry on WhatsApp"}
               </button>
 
             </form>
