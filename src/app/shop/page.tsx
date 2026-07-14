@@ -7,6 +7,7 @@ import { products, Product } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import ProductModal from "@/components/ProductModal";
 import { SITE_CONFIG } from "@/utils/config";
+import { isToteBag } from "@/utils/whatsapp";
 
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -78,7 +79,9 @@ function ShopContent() {
         "@type": "Product",
         "name": product.name,
         "image": `${SITE_CONFIG.siteUrl}${product.image}`,
-        "description": product.description,
+        "description": isToteBag(product)
+          ? `${product.description} Available in Small, Medium and Large sizes. Designed for comfortable everyday use with a 14-inch handle.`
+          : product.description,
         "offers": {
           "@type": "Offer",
           "price": product.price,

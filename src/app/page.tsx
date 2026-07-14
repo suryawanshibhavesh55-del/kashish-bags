@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { MessageCircle, ArrowRight, Star, Plus, Minus, Check } from "lucide-react";
 import { Facebook } from "@/components/Icons";
 import { products, Product } from "@/data/products";
-import { getWhatsAppOrderLink, getWhatsAppGeneralContactLink } from "@/utils/whatsapp";
+import { getWhatsAppOrderLink, getWhatsAppGeneralContactLink, isToteBag } from "@/utils/whatsapp";
 import ProductCard from "@/components/ProductCard";
 import ProductModal from "@/components/ProductModal";
 import { SITE_CONFIG } from "@/utils/config";
@@ -151,7 +151,9 @@ Please share the available designs!`;
         "@type": "Product",
         "name": product.name,
         "image": `${SITE_CONFIG.siteUrl}${product.image}`,
-        "description": product.description,
+        "description": isToteBag(product)
+          ? `${product.description} Available in Small, Medium and Large sizes. Designed for comfortable everyday use with a 14-inch handle.`
+          : product.description,
         "offers": {
           "@type": "Offer",
           "price": product.price,
@@ -493,6 +495,147 @@ Please share the available designs!`;
               <p className="text-xs text-gray-500 font-light leading-relaxed">Chat directly with the business owner, confirm customizations, and track your package.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* TOTE BAG SIZE GUIDE SECTION */}
+      <section className="py-20 bg-[#FDFBF7] border-t border-[#EAE0D5]/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-xs font-semibold tracking-[0.3em] text-[#C5A880] uppercase">
+            Size Guide
+          </span>
+          <h2 className="serif-font text-3xl sm:text-4xl font-normal text-burgundy mt-2 mb-2">
+            Find Your Perfect Size
+          </h2>
+          <p className="text-xs text-gray-400 font-light mb-12 max-w-sm mx-auto">
+            Choose the tote that fits your everyday needs.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end max-w-5xl mx-auto">
+            {/* SMALL CARD */}
+            <div className="bg-white rounded-3xl border border-[#EAE0D5]/50 p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center">
+              <span className="text-xs font-semibold tracking-wider text-[#C5A880] uppercase mb-4">Small</span>
+              
+              {/* Bag Silhouette Representation (Smaller scale) */}
+              <div className="relative w-28 h-24 bg-[#F5EFEB]/50 border border-[#C5A880]/30 rounded-2xl flex items-center justify-center mb-6">
+                {/* Visual handle lines */}
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-10 h-6 border-t border-x border-dashed border-[#C5A880]/60 rounded-t-full"></div>
+                {/* Label inside */}
+                <span className="text-[10px] font-bold text-burgundy/80">13&quot; × 12&quot;</span>
+              </div>
+
+              {/* Dimensions list */}
+              <div className="w-full space-y-2 border-y border-[#F5EFEB] py-3 mb-4 text-xs">
+                <div className="flex justify-between">
+                  <span className="text-gray-400 font-light">Width</span>
+                  <span className="font-semibold text-burgundy">13 inches</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400 font-light">Length</span>
+                  <span className="font-semibold text-burgundy">12 inches</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400 font-light">Handle drop</span>
+                  <span className="font-semibold text-burgundy">14 inches</span>
+                </div>
+              </div>
+
+              {/* Best For list */}
+              <div className="w-full text-left space-y-1.5">
+                <span className="text-[9px] font-bold uppercase tracking-widest text-[#C5A880] block mb-1">Best For:</span>
+                <ul className="text-[11px] text-gray-500 font-light space-y-1 pl-3.5 list-disc">
+                  <li>Daily essentials</li>
+                  <li>Quick shopping</li>
+                  <li>Light everyday use</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* MEDIUM CARD */}
+            <div className="bg-white rounded-3xl border-2 border-burgundy p-6 shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-burgundy text-white text-[8px] font-bold uppercase px-3 py-1 tracking-widest rounded-bl-xl">
+                Most Popular
+              </div>
+              <span className="text-xs font-semibold tracking-wider text-[#C5A880] uppercase mb-4">Medium</span>
+              
+              {/* Bag Silhouette Representation (Medium scale) */}
+              <div className="relative w-36 h-28 bg-[#6B1F28]/5 border border-burgundy/30 rounded-2xl flex items-center justify-center mb-6">
+                {/* Visual handle lines */}
+                <div className="absolute -top-7 left-1/2 -translate-x-1/2 w-12 h-7 border-t border-x border-dashed border-burgundy/60 rounded-t-full"></div>
+                {/* Label inside */}
+                <span className="text-[10px] font-bold text-burgundy">16&quot; × 15&quot;</span>
+              </div>
+
+              {/* Dimensions list */}
+              <div className="w-full space-y-2 border-y border-[#F5EFEB] py-3 mb-4 text-xs">
+                <div className="flex justify-between">
+                  <span className="text-gray-400 font-light">Width</span>
+                  <span className="font-semibold text-burgundy">16 inches</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400 font-light">Length</span>
+                  <span className="font-semibold text-burgundy">15 inches</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400 font-light">Handle drop</span>
+                  <span className="font-semibold text-burgundy">14 inches</span>
+                </div>
+              </div>
+
+              {/* Best For list */}
+              <div className="w-full text-left space-y-1.5">
+                <span className="text-[9px] font-bold uppercase tracking-widest text-[#C5A880] block mb-1">Best For:</span>
+                <ul className="text-[11px] text-gray-500 font-light space-y-1 pl-3.5 list-disc">
+                  <li>College</li>
+                  <li>Office</li>
+                  <li>Everyday carry</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* LARGE CARD */}
+            <div className="bg-white rounded-3xl border border-[#EAE0D5]/50 p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center">
+              <span className="text-xs font-semibold tracking-wider text-[#C5A880] uppercase mb-4">Large</span>
+              
+              {/* Bag Silhouette Representation (Large scale) */}
+              <div className="relative w-44 h-32 bg-[#F5EFEB]/50 border border-[#C5A880]/30 rounded-2xl flex items-center justify-center mb-6">
+                {/* Visual handle lines */}
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-14 h-8 border-t border-x border-dashed border-[#C5A880]/60 rounded-t-full"></div>
+                {/* Label inside */}
+                <span className="text-[10px] font-bold text-burgundy/80">18&quot; × 17&quot;</span>
+              </div>
+
+              {/* Dimensions list */}
+              <div className="w-full space-y-2 border-y border-[#F5EFEB] py-3 mb-4 text-xs">
+                <div className="flex justify-between">
+                  <span className="text-gray-400 font-light">Width</span>
+                  <span className="font-semibold text-burgundy">18 inches</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400 font-light">Length</span>
+                  <span className="font-semibold text-burgundy">17 inches</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400 font-light">Handle drop</span>
+                  <span className="font-semibold text-burgundy">14 inches</span>
+                </div>
+              </div>
+
+              {/* Best For list */}
+              <div className="w-full text-left space-y-1.5">
+                <span className="text-[9px] font-bold uppercase tracking-widest text-[#C5A880] block mb-1">Best For:</span>
+                <ul className="text-[11px] text-gray-500 font-light space-y-1 pl-3.5 list-disc">
+                  <li>Travel</li>
+                  <li>Shopping</li>
+                  <li>Extra storage</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <p className="mt-8 text-[10px] italic text-[#C5A880] max-w-sm mx-auto">
+            * Measurements are approximate and may vary slightly due to the handcrafted nature of the product.
+          </p>
         </div>
       </section>
 

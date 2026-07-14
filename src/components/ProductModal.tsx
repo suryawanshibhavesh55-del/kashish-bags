@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { X, MessageCircle, Minus, Plus, Truck, ShieldCheck, RefreshCw, ChevronUp, ChevronDown } from "lucide-react";
 import { Product } from "@/data/products";
-import { getWhatsAppOrderLink } from "@/utils/whatsapp";
+import { getWhatsAppOrderLink, isToteBag } from "@/utils/whatsapp";
 
 interface ProductModalProps {
   product: Product | null;
@@ -23,6 +23,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
   // State Management
   const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState("Medium");
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [expandedSection, setExpandedSection] = useState<string | null>("description");
   const [mounted, setMounted] = useState(false);
@@ -42,7 +43,9 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
   // Return null early if no product is selected (Declared AFTER all hooks)
   if (!product) return null;
 
-  const whatsAppLink = mounted ? getWhatsAppOrderLink(product, quantity) : "";
+  const whatsAppLink = mounted
+    ? getWhatsAppOrderLink(product, quantity, isToteBag(product) ? selectedSize : undefined)
+    : "";
 
   const galleryImages = [
     product.image,
@@ -52,9 +55,15 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
   const specifications = {
     material: "High-density Organic Canvas & Eco-leather trims",
-    dimensions: "12\" W x 10\" H x 4.5\" D",
+    dimensions: isToteBag(product)
+      ? selectedSize === "Small"
+        ? '13" Width × 12" Length'
+        : selectedSize === "Medium"
+        ? '16" Width × 15" Length'
+        : '18" Width × 17" Length'
+      : "12\" W x 10\" H x 4.5\" D",
     pockets: "1 Zippered Inner Pocket, 2 Slip Compartments",
-    straps: "Double Handle (4\" drop) + Detachable Shoulder Strap (22\" drop)",
+    straps: isToteBag(product) ? "Double Handle (14\" drop)" : "Double Handle (4\" drop) + Detachable Shoulder Strap (22\" drop)",
   };
 
   return (
@@ -137,6 +146,37 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
             )}
           </div>
 
+          {/* Size Selector for Tote Bags */}
+          {isToteBag(product) && (
+            <div className="space-y-3 mb-6">
+              <div className="flex justify-between items-center">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Select Size</span>
+                <span className="text-[10px] font-semibold text-[#C5A880]">Handle: 14&quot; drop</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { name: "Small", dimensions: '13" × 12"' },
+                  { name: "Medium", dimensions: '16" × 15"' },
+                  { name: "Large", dimensions: '18" × 17"' }
+                ].map((s) => (
+                  <button
+                    key={s.name}
+                    type="button"
+                    onClick={() => setSelectedSize(s.name)}
+                    className={`flex flex-col items-center justify-center p-3 rounded-2xl border text-center transition-all duration-300 ${
+                      selectedSize === s.name
+                        ? "border-burgundy bg-[#6B1F28]/5 text-burgundy scale-[1.02]"
+                        : "border-[#EAE0D5] hover:border-burgundy/50 text-[#1A0D0F]/80 bg-white"
+                    }`}
+                  >
+                    <span className="text-[10px] font-bold tracking-wider uppercase">{s.name}</span>
+                    <span className="text-[9px] text-[#1A0D0F]/50 font-light mt-0.5">{s.dimensions}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Micro features list */}
           <div className="grid grid-cols-3 gap-2 border-y border-[#EAE0D5]/40 py-3 mb-6 text-[9px] text-gray-500 font-sans tracking-wider uppercase font-semibold">
             <div className="flex flex-col items-center text-center space-y-1">
@@ -199,7 +239,12 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
               </button>
               {expandedSection === "description" && (
                 <p className="mt-2 text-[11px] text-gray-500 font-light leading-relaxed">
-                  {product.description}
+                  {product.description}{" "}
+                  {isToteBag(product) && (
+                    <span className="font-semibold text-burgundy">
+                      Available in Small, Medium and Large sizes. Designed for comfortable everyday use with a 14-inch handle.
+                    </span>
+                  )}
                 </p>
               )}
             </div>

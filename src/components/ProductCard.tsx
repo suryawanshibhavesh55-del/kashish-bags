@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { MessageCircle, Eye } from "lucide-react";
 import { Product } from "@/data/products";
-import { getWhatsAppOrderLink } from "@/utils/whatsapp";
+import { getWhatsAppOrderLink, isToteBag } from "@/utils/whatsapp";
 
 interface ProductCardProps {
   product: Product;
@@ -20,7 +20,7 @@ export default function ProductCard({ product, index = 0, onClick }: ProductCard
     return () => clearTimeout(timer);
   }, []);
   
-  const whatsAppLink = mounted ? getWhatsAppOrderLink(product) : "";
+  const whatsAppLink = mounted ? getWhatsAppOrderLink(product, 1, isToteBag(product) ? "Medium" : undefined) : "";
   
   // Stagger animation based on index
   const fadeUpVariants = {
