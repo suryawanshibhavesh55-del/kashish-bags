@@ -112,7 +112,7 @@ I am interested in ordering the Special Combo Offer.
 💰 Price: ₹${price}
 
 Please share the available designs!`;
-    return `https://wa.me/919772326529?text=${encodeURIComponent(text)}`;
+    return `https://wa.me/${SITE_CONFIG.whatsAppNumber}?text=${encodeURIComponent(text)}`;
   };
 
   const organizationSchema = {
