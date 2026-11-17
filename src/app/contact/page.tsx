@@ -79,7 +79,7 @@ export default function Contact() {
                   <Phone size={18} className="text-[#C5A880] mt-0.5 shrink-0" />
                   <div>
                     <h3 className="font-semibold uppercase tracking-wider text-[10px] text-gray-400 mb-1">WhatsApp & Call</h3>
-                    <p className="font-light leading-relaxed">+63 910 447 3167</p>
+                    <p className="font-light leading-relaxed">+91 84260 99542</p>
                   </div>
                 </div>
 

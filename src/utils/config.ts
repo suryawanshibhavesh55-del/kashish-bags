@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
   siteUrl: "https://kashish-bags.vercel.app",
 
   // 2. Official Contact Information
-  whatsAppNumber: "639104473167", // Format: [CountryCode][Number] without '+' or spaces
+  whatsAppNumber: "918426099542", // Format: [CountryCode][Number] without '+' or spaces
   shopAddress: "Ground Floor, Ambience Mall, G-7 & G-8, Ambience Island, DLF Phase 3, Sector 24, Gurugram, Haryana 122010",
 
   // 3. Social Media Links

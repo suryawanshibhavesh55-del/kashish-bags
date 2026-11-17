@@ -128,7 +128,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center space-x-2.5">
               <Phone size={14} className="text-[#C5A880] shrink-0" />
-              <span>+63 910 447 3167</span>
+              <span>+91 84260 99542</span>
             </div>
             <div className="flex items-center space-x-2.5">
               <Clock size={14} className="text-[#C5A880] shrink-0" />
